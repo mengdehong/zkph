@@ -1,0 +1,29 @@
+# PyTorch for CUDA 12.1
+# 使用 --extra-index-url 让 pip 在 PyTorch 源找不到包时，会去 PyPI 查找
+--extra-index-url https://download.pytorch.org/whl/cu121
+torch==2.5.1
+torchvision==0.20.1
+torchaudio==2.5.1
+
+# Core ML/DS Libraries
+numpy
+pandas
+scikit-learn
+opencv-python-headless
+Pillow
+timm==0.4.12
+einops
+
+# Utilities
+loguru
+tqdm
+ninja
+packaging
+pyyaml
+albumentations
+pywavelets
+thop
+ptflops
+imagehash
+optuna
+matplotlib
