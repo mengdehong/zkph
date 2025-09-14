@@ -98,7 +98,7 @@ To avoid link rot, both primary and backup links are listed:
 
 1) PIHD dataset (train & eval)
    - Baidu Netdisk: https://pan.baidu.com/share/init?surl=uVnUVr5HqaSpoNifGElucw&pwd=8xwr
-   - Google Drive (backup): https://drive.google.com/drive/folders/1gk9F8jv0Y4bX4JH3jv5y7K5y7K5y7K5y?usp=sharing
+   - Google Drive (backup): https://drive.google.com/file/d/1RaQggCU32_ojtACR8S2f6nfcwTnZt-UB/view?usp=drive_link
 
 2) CocoVal2017 generated dataset (eval)
    - Google Drive: https://drive.google.com/file/d/10W5tuI6ZC-l4I_NkQgjmAHF5Gj0jx9Qw/view?usp=drive_link
@@ -107,7 +107,7 @@ To avoid link rot, both primary and backup links are listed:
    - Google Drive: https://drive.google.com/file/d/186XZ0lxF-rkDGFfLtaVrOJdpzog2hB_7/view?usp=drive_link
 
 4) Trained outputs for evaluation
-   - Google Drive: https://drive.google.com/file/d/1gk9F8jv0Y4bX4JH3jv5y7K5y7K5y7K5y/view?usp=drive_link
+   - Google Drive: https://drive.google.com/open?id=1ctMUqVTuCHiN89wpN1TRyjNRSJOjyAfd&usp=drive_fs
 
 
 ## Training and Evaluation
