@@ -201,6 +201,30 @@ Key options (from `src/bin/quick_bench.rs`):
 - `--seed=S`: RNG seed for reproducibility
 - `--tmpfs`: write intermediate files under `/dev/shm` if available to reduce I/O jitter
 
+## Hyperparameter Optimization
+
+To ensure optimal performance, all core hyperparameters (including learning rate, weight decay, and the loss function weights $\alpha$ and $\beta$) were automatically searched and tuned using the Optuna framework via the `TuneAll.py` script. The final optimized parameter sets were then recorded in the `TrainAll.py` script.
+Regarding the loss function, baseline models consistently use `TripletLoss` with a fixed `margin` of **0.5**. In contrast, the enhanced (+) models underwent a hyperparameter search for the `angular_margin` to achieve the best performance.
+All models were trained for 100 epochs with a batch size of 64, using the AdamW optimizer, a CosineAnnealingLR scheduler, and a hash bit length of 32 or 64.
+
+**Model-Specific Hyperparameters**:
+
+| Model | `lr` | `weight_decay` | `alpha` | `beta` | Margin |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **ResNet50** | 0.000613 | 0.0263 | 0.00423 | 3.15e-6 | 0.5 |
+| **ResNet50+** | 0.000690 | 0.000426 | 0.00247 | 2.84e-6 | 0.281 |
+| **ViT** | 0.000193 | 0.00471 | 0.00456 | 8.36e-5 | 0.5 |
+| **ViT+** | 7.39e-5 | 0.000702 | 0.0128 | 2.65e-6 | 0.479 |
+| **MambaOut** | 0.000496 | 0.00131 | 0.0379 | 2.30e-6 | 0.5 |
+| **MambaOut+** | 0.000322 | 0.000733 | 0.00371 | 5.74e-5 | 0.468 |
+| **GroupMamba** | 0.000272 | 0.0460 | 0.00257 | 3.48e-6 | 0.5 |
+| **GroupMamba+** | 0.000115 | 0.000282 | 0.0104 | 1.61e-5 | 0.315 |
+| **ConvNeXtV2** | 0.000150 | 0.00165 | 0.00260 | 8.71e-6 | 0.5 |
+| **ConvNeXtV2+** | 0.000328 | 0.0878 | 0.00101 | 1.12e-6 | 0.240 |
+| **SwinTiny** | 8.61e-5 | 0.00470 | 0.00402 | 2.18e-5 | 0.5 |
+| **SwinTiny+** | 0.000202 | 0.00126 | 0.0161 | 1.29e-5 | 0.388 |
+
+*Note: The value in the Margin column corresponds to different loss functions. For baseline models, it represents the `margin` parameter for `TripletLoss`. For the enhanced models (indicated by a **+**), it represents the `angular_margin` parameter for `AngularLoss`.*
 
 ## Reproducibility Checklist and Expected Artifacts
 1) Environment: Docker image above (CUDA 12.1 / PyTorch 2.5.1 / Python 3.10 / Rust stable)
